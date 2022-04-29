@@ -7,16 +7,6 @@ let closeModalButtons = document.querySelectorAll('.close-modal');
 
 //===================== Method 1====================================
 
-//show buttons
-showModalButtons.forEach((showbtn, modalIndex) =>
-  showbtn.addEventListener('click', () => openModal(modalIndex))
-);
-
-//close buttons
-closeModalButtons.forEach((closebtn, modalIndex) =>
-  closebtn.addEventListener('click', () => closeModal(modalIndex))
-);
-
 //open
 function openModal(index) {
   modals[index].classList.remove('hidden');
@@ -31,6 +21,27 @@ function closeModal(index) {
 window.addEventListener('click', e => {
   if (e.target.className === 'modal') {
     e.target.classList.add('hidden');
+  }
+});
+
+//show buttons
+showModalButtons.forEach((showbtn, modalIndex) =>
+  showbtn.addEventListener('click', () => openModal(modalIndex))
+);
+
+//close buttons
+closeModalButtons.forEach((closebtn, modalIndex) =>
+  closebtn.addEventListener('click', () => closeModal(modalIndex))
+);
+
+//esc button
+document.addEventListener('keyup', e => {
+  if (e.code === 'Escape') {
+    for (const modal of modals) {
+      if (!modal.classList.contains('hidden')) {
+        modal.classList.add('hidden');
+      }
+    }
   }
 });
 
