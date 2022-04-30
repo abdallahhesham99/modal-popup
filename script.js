@@ -36,11 +36,9 @@ closeModalButtons.forEach((closebtn, modalIndex) =>
 
 //esc button
 document.addEventListener('keyup', e => {
-  if (e.code === 'Escape') {
-    for (const modal of modals) {
-      if (!modal.classList.contains('hidden')) {
-        modal.classList.add('hidden');
-      }
+  for (const modal of modals) {
+    if (e.code === 'Escape' && !modal.classList.contains('hidden')) {
+      modal.classList.add('hidden');
     }
   }
 });
